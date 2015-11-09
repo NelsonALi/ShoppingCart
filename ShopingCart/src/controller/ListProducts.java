@@ -55,7 +55,6 @@ public class ListProducts extends HttpServlet {
 		}
 //        request.setAttribute("message", message);   
  		System.out.println(message);	*/
-getServletContext().getRequestDispatcher("/ListProducts.jsp").forward(request, response);		
-// 		getServletContext().getRequestDispatcher("/ProductDetail").forward(request, response);
+		getServletContext().getRequestDispatcher("/ListProducts.jsp").forward(request, response);		
         }
 }

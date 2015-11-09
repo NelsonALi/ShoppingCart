@@ -20,51 +20,69 @@ public class Lineitem implements Serializable {
 	 @Id
 	 @SequenceGenerator( name = "LINEITEM_SEQ1", sequenceName = "LINEITEM_SEQ1", allocationSize = 1, initialValue = 1 )
 	 @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "LINEITEM_SEQ1" )
-	private long id;
+	 private long id;
 
-	private BigDecimal quantity;
+	  private int quantity;
+		private BigDecimal total;
+		private java.sql.Date purchaseDate = null;
 
-	//bi-directional many-to-one association to Product
-	@ManyToOne
-	private Product product;
+		//bi-directional many-to-one association to Product
+		@ManyToOne
+		private Product product;
 
-	//bi-directional many-to-one association to Shopper
-	@ManyToOne
-	private Shopper shopper;
+		//bi-directional many-to-one association to Shopper
+		@ManyToOne
+		private Shopper shopper;
 
-	public Lineitem() {
+		public Lineitem() {
+		}
+
+		public java.sql.Date getPurchaseDate() {
+			return purchaseDate;
+		}
+
+		public void setPurchaseDate(java.sql.Date purchaseDate) {
+			this.purchaseDate = purchaseDate;
+		}
+
+		public long getId() {
+			return this.id;
+		}
+
+		public void setId(long id) {
+			this.id = id;
+		}
+
+		public int getQuantity() {
+			return this.quantity;
+		}
+
+		public void setQuantity(int quanty) {
+			this.quantity = quanty;
+		}
+
+		public Product getProduct() {
+			return this.product;
+		}
+
+		public void setProduct(Product product) {
+			this.product = product;
+		}
+
+		public Shopper getShopper() {
+			return this.shopper;
+		}
+
+		public void setShopper(Shopper shopper) {
+			this.shopper = shopper;
+		}
+
+		public BigDecimal getTotal() {
+			return total;
+		}
+
+		public void setTotal(BigDecimal total) {
+			this.total = total;
+		}
+
 	}
-
-	public long getId() {
-		return this.id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public BigDecimal getQuantity() {
-		return this.quantity;
-	}
-
-	public void setQuantity(BigDecimal quantity) {
-		this.quantity = quantity;
-	}
-
-	public Product getProduct() {
-		return this.product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public Shopper getShopper() {
-		return this.shopper;
-	}
-
-	public void setShopper(Shopper shopper) {
-		this.shopper = shopper;
-	}
-
-}

@@ -9,6 +9,13 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 //import model.*;
 
+
+
+import model.Lineitem;
+import model.Product;
+import business.ALineitem;
+import business.TheProduct;
+
 public class ProductDB {
 
 	public static void insert(model.Product aProduct) {
@@ -87,5 +94,23 @@ public class ProductDB {
 			em.close();
 		}
 		return  product;
-	}	 	 
+	}	 
+	public static TheProduct internalCopy(Product aProduct) {
+		TheProduct theProduct = new TheProduct();
+		theProduct.setId(aProduct.getId());
+		theProduct.setName(aProduct.getName());
+		theProduct.setDescription(aProduct.getDescription());
+		theProduct.setUnitprice(aProduct.getUnitprice());
+		theProduct.setPic(aProduct.getPic());
+		return theProduct;
+	}	 
+	public static Product dbCopy(TheProduct aProduct) {
+		Product theProduct = new Product();
+		theProduct.setId(aProduct.getId());
+		theProduct.setName(aProduct.getName());
+		theProduct.setDescription(aProduct.getDescription());
+		theProduct.setUnitprice(aProduct.getUnitprice());
+		theProduct.setPic(aProduct.getPic());
+		return theProduct;
+	}
 }

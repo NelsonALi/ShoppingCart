@@ -13,7 +13,8 @@
 	<jsp:include page="./menu.jsp"/>
 	<div class="jumbotron">
 		<form class="form-inline" action="CheckOut">
-			<p>The Shopping Cart for ${shoppername}".</p>
+			<p>You, ${shoppername}", have paid <fmt:setLocale value="en_US" />
+							<fmt:formatNumber value="${GrandTotal}" type="currency" /> on ${PurchaseDate} for the following Items:</p>
 			<table class="table table-bordered">
 				<tr>
 					<th>Product Name</th>
@@ -31,16 +32,9 @@
 							href="/ShopingCart/RemoveFromCart?ProductId=${item.product.id}&ShopperId=${item.shopper.id}" role="button">Remove from Cart</a></td>
 					</tr>
 				</c:forEach>
-				<tr>
-					<td></td>
-					<td></td>
-					<td>Cart Total</td>
-					<td><fmt:setLocale value="en_US" />
-							<fmt:formatNumber value="${GrandTotal}" type="currency" /></td>
-				</tr>
 			</table>
 			<a class="btn btn-default"	href="/ShopingCart/ListProducts" role="button">Continue Shopping</a></td>
-			<a class="btn btn-default"	href="/ShopingCart/CheckOut?Cart=${MyCart}" role="button">Check Out</a></td>			
+			<a class="btn btn-default"	href="/ShopingCart/Logout.jsp" role="button">log Out</a></td>			
 		</form>
 	</div>
 </body>

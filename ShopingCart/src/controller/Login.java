@@ -44,6 +44,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
         HttpSession session = request.getSession(true);
+        double grandTotal = 0.0;
         String userid = (String) session.getAttribute("loginname");
         boolean shopperIsMember = false;
         if (userid == null) {
@@ -51,6 +52,7 @@ public class Login extends HttpServlet {
         	 shopperIsMember = ShopperDB.checktUser(userid);
      		if (shopperIsMember) {        	 
      			session.setAttribute("loginname", userid);
+     			session.setAttribute("GrandTotal",  grandTotal);
  	        	getServletContext().getRequestDispatcher("/ListProducts").forward(request, response);	
      		} else {
      			// You are not a memeber yet, please register first

@@ -2,27 +2,16 @@ package customTools;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.LinkedList;
+
+//import java.util.LinkedList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import business.TheShopper;
 import model.*;
 
 public class ShopperDB {
-	private static LinkedList myCart;
-	
-	public ShopperDB() {
-		myCart = new LinkedList();
-	}
-
-	public static LinkedList getMyCart() {
-		return myCart;
-	}
-
-	public static void setMyCart(LinkedList myCart) {
-		ShopperDB.myCart = myCart;
-	}
 
 	public static void insert(Shopper user) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
@@ -71,13 +60,12 @@ public class ShopperDB {
     //may not need this one
 	public static List<Shopper> selectAll() {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		EntityTransaction trans = em.getTransaction();
+//		em.getTransaction();
 		List<Shopper> tList = new ArrayList<Shopper>();
 		String qString = "select e from Tuser e";
 		TypedQuery<Shopper> q = (TypedQuery<Shopper>) em.createQuery(qString, Shopper.class);
-		List<Shopper> tuser = null;
 		try {
-			tuser = q.getResultList();
+			q.getResultList();
 		} catch (Exception e) {
 			System.out.println(e);
 		} finally {
@@ -88,7 +76,7 @@ public class ShopperDB {
 	
 	public static Shopper getUserById(int userId) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		EntityTransaction trans = em.getTransaction();
+//		em.getTransaction();
 		String qString = "select e from Shopper e where e.id = :userId";
 		TypedQuery<Shopper> q = (TypedQuery<Shopper>) em.createQuery(qString, Shopper.class);
 		Shopper tuser = null;
@@ -104,9 +92,9 @@ public class ShopperDB {
 	
 	public static boolean checktUser(String loginName) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		EntityTransaction trans = em.getTransaction();
+//		em.getTransaction();
 		boolean shopperExist = false;
-		String qString = "select e from shopper e where e.name = :loginName";
+		String qString = "select e from Shopper e where e.name = :loginName";
 		TypedQuery<Shopper> q = (TypedQuery<Shopper>) em.createQuery(qString, Shopper.class);
 		q.setParameter("loginName", loginName);
 		Shopper tuser = null;
@@ -122,9 +110,9 @@ public class ShopperDB {
 	}
 	public static Shopper getUserByName(String loginName) {
 		EntityManager em = DBUtil.getEmFactory().createEntityManager();
-		EntityTransaction trans = em.getTransaction();
+		em.getTransaction();
 
-		String qString = "select e from shopper e where e.name = :loginName";
+		String qString = "select e from Shopper e where e.name = :loginName";
 		TypedQuery<Shopper> q = (TypedQuery<Shopper>) em.createQuery(qString, Shopper.class);
 		q.setParameter("loginName", loginName);
 		Shopper tuser = null;
@@ -136,5 +124,19 @@ public class ShopperDB {
 			em.close();
 		}
 		return tuser ;
+	}	 
+	public static TheShopper internalCopy(Shopper aShopper) {
+		TheShopper theShopper = new TheShopper();
+		theShopper.setId(aShopper.getId());
+		theShopper.setName(aShopper.getName());
+
+		return theShopper;
+	}	 
+	public static Shopper dbCopy(TheShopper aShopper) {
+		Shopper theShopper = new Shopper();
+		theShopper.setId(aShopper.getId());
+		theShopper.setName(aShopper.getName());
+
+		return theShopper;
 	}
 }

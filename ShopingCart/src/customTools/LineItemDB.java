@@ -1,12 +1,16 @@
 package customTools;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
+import business.*;
 import model.*;
 
 public class LineItemDB {
@@ -90,5 +94,39 @@ public class LineItemDB {
 		}
 		return item;
 	}
+	public static ALineitem internalCopy(Lineitem theLineitem) {
+		ALineitem aLineitem = new ALineitem();
+		aLineitem.setId(theLineitem.getId());
+		aLineitem.setQuantity(theLineitem.getQuantity());
+		aLineitem.setTotal(theLineitem.getTotal());
+		aLineitem.setProduct(ProductDB.internalCopy(theLineitem.getProduct()));
+		aLineitem.setShopper(ShopperDB.internalCopy(theLineitem.getShopper()));
+		return aLineitem;
+	}
+	
+		public static Lineitem dbCopy(ALineitem theLineitem) {
+			Lineitem aLineitem = new Lineitem();
+			aLineitem.setId(theLineitem.getId());
+			aLineitem.setQuantity(theLineitem.getQuantity());
+			aLineitem.setTotal(theLineitem.getTotal());
+			aLineitem.setProduct(ProductDB.dbCopy(theLineitem.getProduct()));
+			aLineitem.setShopper(ShopperDB.dbCopy(theLineitem.getShopper()));
+			return aLineitem;
+		}
+		public static java.sql.Date currentSqlDate() {
+			//sort of equivalent to sql sysdate
+			Date today = new Date();
+	        SimpleDateFormat sdf = new SimpleDateFormat("MM-DD-YYYY");
+	        String formattedDate = sdf.format(today);
+	        java.util.Date utilDate = null;
+			try {
+				utilDate = sdf.parse(formattedDate);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+			return sqlDate;
+		}
 
 }
