@@ -53,8 +53,11 @@ public class ProductDetail extends HttpServlet {
 		request.setAttribute("product", theP);
         HttpSession session = request.getSession(true);
         String userid = (String) session.getAttribute("loginname");
-        if (userid == null || userid == "") {
-    		getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);	        	
+		request.removeAttribute("message");
+		if (userid == null || userid == "") {
+			request.setAttribute("message", "You need to login first before accessing/updating Cart.");
+			getServletContext().getRequestDispatcher("/login.jsp").forward(
+					request, response);       	
         } else {
         	getServletContext().getRequestDispatcher("/ProductDetail.jsp").forward(request, response);	
         }

@@ -7,10 +7,10 @@ RawBlameHistory     16 lines (16 sloc)  550 Bytes
     </div>
     <div>
       <ul class="nav navbar-nav">
-						<li><a href="ListProducts">View Merchandises</a></li>
-						<li><a href="register.html">Join Membership</a></li>
 						<li><a href="login.jsp">Login</a></li>
-						<li><a href="ViewCart.jsp">View Cart</a></li>
+						<li><a href="register.jsp">Join Membership</a></li>
+						<li><a href="ListProducts">View Merchandises</a></li>
+						<li><a href="ShowCart.jsp">View Cart</a></li>
       </ul>
     </div>
   </div>

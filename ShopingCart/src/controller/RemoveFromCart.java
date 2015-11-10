@@ -40,11 +40,13 @@ public class RemoveFromCart extends HttpServlet {
 		String pId = request.getParameter("ProductId");
 		String sId = request.getParameter("ShopperId");
 		LinkedList<ALineitem> myCart = (LinkedList<ALineitem>) session.getAttribute("MyCart");
+		LinkedList<ALineitem> theCart = Cart.getTheCart();	
 		for (ALineitem anItem : myCart) {
 			String itemSid = String.valueOf(anItem.getShopper().getId());
 			String itemPid = String.valueOf(anItem.getProduct().getId());	
 			if (itemPid.equals(pId) && itemSid.equals(sId)) {
 				myCart.remove(anItem);
+				theCart.remove(anItem);
 			}
 		}
 //		Cart.setTheCart(myCart);

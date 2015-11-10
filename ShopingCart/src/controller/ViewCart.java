@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import customTools.ShopperDB;
 import model.Lineitem;
+import business.ALineitem;
 import business.Cart;
 
 /**
@@ -38,13 +39,20 @@ public class ViewCart extends HttpServlet {
 		response.setContentType("text/html");
         HttpSession session = request.getSession(true);
         String userid = (String) session.getAttribute("loginname");
-		LinkedList<Lineitem> myCart = Cart.getTheCart();
-		for (Lineitem anItem : myCart){
-			if (String.valueOf(anItem.getShopper().getId()) == request.getParameter("ShopperId"))
-				myCart.remove(anItem);
-			request.setAttribute("MyCart", myCart);
-			
-			getServletContext().getRequestDispatcher("/ShowCart.jsp").forward(request, response);	
+		request.removeAttribute("message");
+		if (userid == null || userid == "") {
+			request.setAttribute("message", "You need to login first before accessing/updating Cart.");
+			getServletContext().getRequestDispatcher("/login.jsp").forward(
+					request, response);
+		} else {
+			LinkedList<ALineitem> myCart = Cart.getTheCart();
+			for (ALineitem anItem : myCart){
+				if (String.valueOf(anItem.getShopper().getId()) == request.getParameter("ShopperId"))
+					myCart.remove(anItem);
+				request.setAttribute("MyCart", myCart);
+				
+				getServletContext().getRequestDispatcher("/ShowCart.jsp").forward(request, response);	
+			}
 		}
 	}
 	/**

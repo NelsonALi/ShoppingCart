@@ -10,16 +10,25 @@
 </head>
 <body>
 	<jsp:include page="./carousel.jsp"/>
-	<jsp:include page="./menu.jsp"/>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Online Shopping Store</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+		<li><a href="login.jsp">Login</a></li>
+		<li><a href="register.jsp">Register</a></li>
+		<li><a href="ViewProducts">View Merchandises</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 	<div class="jumbotron">
 		<form class="form-inline">
-		<h2> Actions you can do from the menu: </h2>	 
-		<p>
-		<br>		*	View Merchandises and select Product to Buy
-		<br>	    *	Join Online Shopping Group
-		<br>	    *	Login 
-		<br>		*	View your Cart (Only if you are logged in first) 
-		</p>
+			<h2> You may view the merchandises without logging in. <br>
+			Please login/register in order to purchase or view details of products. </h2>	 
+			${productView}
 		</form>
 	</div> 
 </body>

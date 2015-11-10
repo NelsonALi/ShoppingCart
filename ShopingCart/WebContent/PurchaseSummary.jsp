@@ -22,7 +22,7 @@
 					<th>Total Price</th>
 					<th></th>
 				</tr>
-				<c:forEach items="${MyCart}" var="item">
+				<c:forEach items="${tempCart}" var="item">
 					<tr>
 						<td>${item.product.name}</td>
 						<td>${item.quantity}</td>
@@ -34,7 +34,7 @@
 				</c:forEach>
 			</table>
 			<a class="btn btn-default"	href="/ShopingCart/ListProducts" role="button">Continue Shopping</a></td>
-			<a class="btn btn-default"	href="/ShopingCart/Logout.jsp" role="button">log Out</a></td>			
+			<a class="btn btn-default"	href="/ShopingCart/logout.jsp" role="button">log Out</a></td>			
 		</form>
 	</div>
 </body>

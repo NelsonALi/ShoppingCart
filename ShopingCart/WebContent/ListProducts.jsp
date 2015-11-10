@@ -1,4 +1,3 @@
-RawBlameHistory     41 lines (41 sloc)  1.29 KB
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

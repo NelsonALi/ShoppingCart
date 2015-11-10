@@ -1,4 +1,3 @@
-RawBlameHistory     55 lines (54 sloc)  2.09 KB
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,28 +16,27 @@ RawBlameHistory     55 lines (54 sloc)  2.09 KB
 <title>Login</title>
 </head>
 <body>
-<!-- <nav class="navbar navbar-inverse">
+	<jsp:include page="./carousel.jsp"/>
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Online Shopping</a>
+      <a class="navbar-brand" href="#">Online Shopping Store</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
-						<li><a href="ListProducts">View Merchandises</a></li>
-						<li><a href="register.html">Join Memebership</a></li>
-						<li><a href="login.jsp">Login</a></li>
-						<li><a href="ViewCart.jsp">View the Items in Cart</a></li>
+		<li><a href="login.jsp">Login</a></li>
+		<li><a href="Register">Register</a></li>
+		<li><a href="ViewProducts">View Merchandises</a></li>
       </ul>
     </div>
   </div>
-</nav> -->
-<jsp:include page="./menu.jsp"/>
+</nav>
 <div class="container">
   <div class="jumbotron">
     <h1>Online Shopping store</h1>      
   </div>
-
 	<form role="form" action = "Login" method = "post">
+	${message}
     <div class="form-group">
       <label for="loginname"></label>
       <input type="text" class="form-control" id="user" name="loginname" placeholder="Enter login name" name="loginname">
@@ -50,7 +48,7 @@ RawBlameHistory     55 lines (54 sloc)  2.09 KB
  -->
     <button type="submit" class="btn btn-default">Login</button>
     </form>       
-   <h2><a href = "register.jsp" >Register for Membership</a></h2>
+   <h3><a href = "register.jsp" >Register for Membership</a></h3>
 </div>
 </body>
 </html>

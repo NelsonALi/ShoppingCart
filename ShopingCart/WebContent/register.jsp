@@ -10,7 +10,20 @@ RawBlameHistory     34 lines (33 sloc)  1017 Bytes
 </head>
 <body>
 	<jsp:include page="./carousel.jsp"/>
-	<jsp:include page="./menu.jsp"/>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Online Shopping Store</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+		<li><a href="login.jsp">Login</a></li>
+		<li><a href="Register">Register</a></li>
+		<li><a href="ViewProducts">View Merchandises</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 	<div class="jumbotron">
 		<form class="form-inline" action="Register" method="post">
 			<h2>Welcome to join the Online Shopping Group</h1>

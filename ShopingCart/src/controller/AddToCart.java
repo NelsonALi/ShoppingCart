@@ -45,13 +45,16 @@ public class AddToCart extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+		HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession(true);
 		String userid = (String) session.getAttribute("loginname");
-		double grandTotal = (double) session.getAttribute("GrandTotal");
+		double grandTotal = 0.0; 
+		if (session.getAttribute("GrandTotal") != null) grandTotal = (double) session.getAttribute("GrandTotal");
+		request.removeAttribute("message");
 		if (userid == null || userid == "") {
-			getServletContext().getRequestDispatcher("/Login.jsp").forward(
+			request.setAttribute("message", "You need to login first before accessing/updating Cart.");
+			getServletContext().getRequestDispatcher("/login.jsp").forward(
 					request, response);
 		} else {
 			// getUserByName

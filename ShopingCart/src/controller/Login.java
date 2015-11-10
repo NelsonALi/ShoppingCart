@@ -56,7 +56,7 @@ public class Login extends HttpServlet {
  	        	getServletContext().getRequestDispatcher("/ListProducts").forward(request, response);	
      		} else {
      			// You are not a memeber yet, please register first
-    	        getServletContext().getRequestDispatcher("/signup.html").forward(request, response);					     			
+    	        getServletContext().getRequestDispatcher("/register.jsp").forward(request, response);					     			
      		}
         } else {
         	//you have logged in already
